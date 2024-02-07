@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,19 +19,17 @@
         <div class="container">
             <header>
                 <h1>
-                    Password Generator
+                    Ecco la tua password
                 </h1>
             </header>
 
             <main>
-                <form action="./partials/passGenerator.php" method="POST">
-                    <label for="length">Inserisci la lunghezza della password desiderata</label>
-                    <input type="number" name="length" id="length">
-                    <button type="submit">
-                        Send
-                    </button>
-                </form>
-
+                <div>
+                    <?php
+                        
+                        echo $_SESSION['finalPassword'];
+                    ?>
+                </div>
             </main>
 
             <footer>
