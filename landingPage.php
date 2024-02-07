@@ -25,14 +25,26 @@
                     <label for="length">Inserisci la lunghezza della password desiderata</label>
                     <input type="number" name="length" id="length">
 
-                    <label for="letter">lettere</label>
-                    <input type="checkbox" value="letter" id="letter" name="option1">
+                    <div>
+                        <label for="letter">lettere</label>
+                        <input type="checkbox" value="letter" id="letter" name="option1">
+    
+                        <label for="number">numeri</label>
+                        <input type="checkbox" value="number" id="number" name="option2">
+    
+                        <label for="symbol">simboli</label>
+                        <input type="checkbox" value="symbol" id="symbol" name="option3">
+                    </div>
 
-                    <label for="number">numeri</label>
-                    <input type="checkbox" value="number" id="number" name="option2">
+                    <div>
+                        <label for="">Ripeti Caratteri</label>
+                        <input type="radio" value="true" id="repeat" name="repeatStatus">
+    
+                        <label for="no-repeat">Non Ripetere i Caratteri</label>
+                        <input type="radio" value="false" id="no-repeat" name="repeatStatus">
+                    </div>
 
-                    <label for="symbol">simboli</label>
-                    <input type="checkbox" value="symbol" id="symbol" name="option3">
+
                     <button type="submit">
                         Send
                     </button>

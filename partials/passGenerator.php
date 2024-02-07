@@ -16,6 +16,12 @@
     $numeri = '0123456789';
     $simboli = '!@#$%^&*()_-+=<>?';
     $caratteri = '';
+    $repeat = false;
+
+    if(isset($_GET['repeatStatus']) && $_GET['repeatStatus'] === 'true'){
+        $repeat = true;
+    }
+    
 
     if(isset($_GET['option1'])){
 
@@ -37,17 +43,27 @@
 
     if(empty($caratteri)){
         $caratteri = $lettere.$numeri.$simboli;
-    }
-
-
-    function randomPass($lunghezza, $caratteri){
-
-        $passwordCasuale = substr(str_shuffle($caratteri), 0, $lunghezza);
-
-        return $passwordCasuale;
     };
 
-    $finalPassword = randomPass($userLength, $caratteri);
+
+    function randomPass($lunghezza, $caratteri, $repeat) {
+        if (!$repeat) {
+            $caratteriUnici = str_shuffle($caratteri);
+            return substr($caratteriUnici, 0, $lunghezza);
+        }
+    
+        $passwordCasuale = '';
+        $caratteriLunghezza = strlen($caratteri);
+    
+        for ($i = 0; $i < $lunghezza; $i++) {
+            $passwordCasuale .= $caratteri[mt_rand(0, $caratteriLunghezza - 1)];
+        }
+    
+        return $passwordCasuale;
+    }
+    
+
+    $finalPassword = randomPass($userLength, $caratteri, $repeat);
 
 
     $_SESSION['finalPassword'] = $finalPassword;
