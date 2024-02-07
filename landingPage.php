@@ -21,9 +21,18 @@
             </header>
 
             <main>
-                <form action="./partials/passGenerator.php" method="POST">
+                <form action="./partials/passGenerator.php" method="GET">
                     <label for="length">Inserisci la lunghezza della password desiderata</label>
                     <input type="number" name="length" id="length">
+
+                    <label for="letter">lettere</label>
+                    <input type="checkbox" value="letter" id="letter" name="option1">
+
+                    <label for="number">numeri</label>
+                    <input type="checkbox" value="number" id="number" name="option2">
+
+                    <label for="symbol">simboli</label>
+                    <input type="checkbox" value="symbol" id="symbol" name="option3">
                     <button type="submit">
                         Send
                     </button>

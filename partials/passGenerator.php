@@ -1,9 +1,9 @@
 <?php
     session_start();
 
-    if(intval($_POST['length']) > 0){
+    if(intval($_GET['length']) > 0){
 
-        $userLength = intval($_POST['length']); 
+        $userLength = intval($_GET['length']); 
 
     }else{
 
@@ -12,14 +12,42 @@
 
     $finalPassword = '';
 
-    function randomPass($lunghezza){
-        $caratteri = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-+=<>?';
+    $lettere = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $numeri = '0123456789';
+    $simboli = '!@#$%^&*()_-+=<>?';
+    $caratteri = '';
+
+    if(isset($_GET['option1'])){
+
+        $caratteri .= $lettere;
+
+    };
+    
+    if(isset($_GET['option2'])){
+
+        $caratteri .= $numeri;
+
+    };
+    
+    if(isset($_GET['option3'])){
+
+        $caratteri .= $simboli;
+
+    };
+
+    if(empty($caratteri)){
+        $caratteri = $lettere.$numeri.$simboli;
+    }
+
+
+    function randomPass($lunghezza, $caratteri){
+
         $passwordCasuale = substr(str_shuffle($caratteri), 0, $lunghezza);
 
         return $passwordCasuale;
     };
 
-    $finalPassword = randomPass($userLength);
+    $finalPassword = randomPass($userLength, $caratteri);
 
 
     $_SESSION['finalPassword'] = $finalPassword;
